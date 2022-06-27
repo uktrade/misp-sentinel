@@ -23,7 +23,7 @@ class RequestObject:
     def _handle_ip(self, attr, attr_type, graph_v4_name, graph_v6_name):
         if attr['type'] == attr_type:
             if '.' in attr['value']:
-                setattr(self, graph_v4_name, attr['value'])
+                setattr(self, graph_v4_name, attr['value'].replace("/32", ""))
             else:
                 setattr(self, graph_v6_name, attr['value'])
 
@@ -78,3 +78,6 @@ class RequestObject:
                 self.networkIPv4 = ip
             else:
                 self.networkIPv6 = ip
+
+        if attr['type'] == "domain":
+             self.domainName = attr["value"]

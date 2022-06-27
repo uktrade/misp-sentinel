@@ -53,10 +53,12 @@ MISP_SPECIAL_CASE_TYPES = frozenset([
     'domain|ip',
     'email-src',
     'ip-dst|port',
-    'ip-src|port'
+    'ip-src|port',
+    'domain', # Added by Lyndon
 ])
 
 MISP_ACTIONABLE_TYPES = frozenset([
+    #"domain",  #  Added by Lyndon
     *ATTR_MAPPING.keys(),
     *MISP_SPECIAL_CASE_TYPES
 ])
